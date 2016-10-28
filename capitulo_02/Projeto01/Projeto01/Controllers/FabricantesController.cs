@@ -37,7 +37,8 @@ namespace Projeto01.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
             Fabricante fabricante = context.Fabricantes.Find(id);
             if (fabricante == null)
@@ -54,7 +55,8 @@ namespace Projeto01.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Entry(fabricante).State = EntityState.Modified;
+                context.Entry(fabricante).State = 
+                    EntityState.Modified;
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +68,8 @@ namespace Projeto01.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
             Fabricante fabricante = context.Fabricantes.Find(id);
             if (fabricante == null)
@@ -81,7 +84,8 @@ namespace Projeto01.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(
+                    HttpStatusCode.BadRequest);
             }
             Fabricante fabricante = context.Fabricantes.Find(id);
             if (fabricante == null)

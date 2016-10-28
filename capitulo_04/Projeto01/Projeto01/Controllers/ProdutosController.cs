@@ -14,7 +14,9 @@ namespace Projeto01.Controllers
         // GET: Produtos
         public ActionResult Index()
         {
-            var produtos = context.Produtos.Include(c => c.Categoria).Include(f => f.Fabricante).OrderBy(n => n.Nome);
+            var produtos = context.Produtos.
+                Include(c => c.Categoria).
+                Include(f => f.Fabricante).OrderBy(n => n.Nome);
             return View(produtos);
         }
 
@@ -25,7 +27,10 @@ namespace Projeto01.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Produto produto = context.Produtos.Where(p => p.ProdutoId == id).Include(c => c.Categoria).Include(f => f.Fabricante).First();
+            Produto produto = context.Produtos.
+                Where(p => p.ProdutoId == id).
+                Include(c => c.Categoria).
+                Include(f => f.Fabricante).First();
             if (produto == null)
             {
                 return HttpNotFound();
@@ -36,8 +41,12 @@ namespace Projeto01.Controllers
         // GET: Produtos/Create
         public ActionResult Create()
         {
-            ViewBag.CategoriaId = new SelectList(context.Categorias.OrderBy(b => b.Nome), "CategoriaId", "Nome");
-            ViewBag.FabricanteId = new SelectList(context.Fabricantes.OrderBy(b => b.Nome), "FabricanteId", "Nome");
+            ViewBag.CategoriaId = new 
+                SelectList(context.Categorias.OrderBy(b => b.Nome), 
+                "CategoriaId", "Nome");
+            ViewBag.FabricanteId = new 
+                SelectList(context.Fabricantes.OrderBy(b => b.Nome), 
+                "FabricanteId", "Nome");
             return View();
         }
 
@@ -69,7 +78,10 @@ namespace Projeto01.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoriaId = new SelectList(context.Categorias.OrderBy(b => b.Nome), "CategoriaId", "Nome", produto.CategoriaId);
+            ViewBag.CategoriaId = 
+                new SelectList(context.Categorias.
+                OrderBy(b => b.Nome), "CategoriaId", "Nome", 
+                produto.CategoriaId);
             ViewBag.FabricanteId = new SelectList(context.Fabricantes.OrderBy(b => b.Nome), "FabricanteId", "Nome", produto.FabricanteId);
             return View(produto);
         }
